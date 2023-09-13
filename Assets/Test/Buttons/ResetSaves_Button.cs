@@ -4,6 +4,6 @@ public class ResetSaves_Button : ButtonClick
 {
     protected override void OnClick()
     {
-        Saves.ResetSaves();
+        Saves.Delete();
     }
 }
