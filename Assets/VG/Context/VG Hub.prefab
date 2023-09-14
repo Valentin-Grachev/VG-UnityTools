@@ -380,7 +380,7 @@ GameObject:
   - component: {fileID: 2848169239822441481}
   - component: {fileID: 4969322973404916375}
   m_Layer: 0
-  m_Name: Canvas
+  m_Name: Interface
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -606,6 +606,7 @@ MonoBehaviour:
   - {fileID: 6387240570347451796}
   - {fileID: 6387240571109219202}
   - {fileID: 3278240949433767364}
+  - {fileID: 5257461911337241450}
   - {fileID: 6387240570575114812}
   - {fileID: 6387240571043514337}
   _waitInitializations:
@@ -874,6 +875,7 @@ Transform:
   - {fileID: 6387240571109219201}
   - {fileID: 6387240570320989818}
   - {fileID: 4022390153321484355}
+  - {fileID: 2393855144857530390}
   m_Father: {fileID: 4654043380458697032}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1512,3 +1514,65 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1 &8949679888898248044
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2393855144857530390}
+  - component: {fileID: 5257461911337241450}
+  - component: {fileID: 5502195563728965743}
+  m_Layer: 0
+  m_Name: Analytics
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2393855144857530390
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8949679888898248044}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6387240571021176384}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5257461911337241450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8949679888898248044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f3cd08f8cb59ca4aae5b3fcc10d4229, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _debugLogs: 1
+  _services:
+  - {fileID: 5502195563728965743}
+  _waitInitializations: []
+--- !u!114 &5502195563728965743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8949679888898248044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd0cc19efe39ee7438e4c6032b075350, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _tracking: 1

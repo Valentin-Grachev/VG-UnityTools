@@ -4,7 +4,7 @@ using VG.Internal;
 
 namespace VG
 {
-    [RequireComponent(typeof(PurchasesHandler))]
+    [RequireComponent(typeof(PurchasesMediator))]
     public class Iap : Manager
     {
         [System.Serializable]
@@ -52,7 +52,7 @@ namespace VG
 
             service.InitializeProducts(_products);
 
-            var purchasesHandler = GetComponent<PurchasesHandler>();
+            var purchasesHandler = GetComponent<PurchasesMediator>();
             purchasesHandler.Initialize();
             purchasesHandler.Handle(_products);
 

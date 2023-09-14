@@ -1,20 +1,26 @@
 using UnityEngine;
 
-public abstract class Initializable : MonoBehaviour
+
+namespace VG
 {
-    public bool initialized { get; private set; }
-
-    public abstract void Initialize();
-
-    protected abstract void OnInitialized();
-
-    protected void CompleteInitializing()
+    public abstract class Initializable : MonoBehaviour
     {
-        initialized = true;
-        OnInitialized();
+        public bool initialized { get; private set; }
+
+        public abstract void Initialize();
+
+        protected abstract void OnInitialized();
+
+        protected void CompleteInitializing()
+        {
+            initialized = true;
+            OnInitialized();
+        }
+
+
+
+
     }
-
-    
-
-
 }
+
+

@@ -123,7 +123,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &1016656581
+--- !u!1001 &486442427
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -247,6 +247,30 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7146767969630890818, guid: acb64ae4e2bf7224f888c7900cc2e6dc, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8796421638311900944, guid: acb64ae4e2bf7224f888c7900cc2e6dc, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8796421638311900944, guid: acb64ae4e2bf7224f888c7900cc2e6dc, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8796421638311900944, guid: acb64ae4e2bf7224f888c7900cc2e6dc, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8796421638311900944, guid: acb64ae4e2bf7224f888c7900cc2e6dc, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8796421638311900944, guid: acb64ae4e2bf7224f888c7900cc2e6dc, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8796421638311900944, guid: acb64ae4e2bf7224f888c7900cc2e6dc, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
