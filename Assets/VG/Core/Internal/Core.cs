@@ -14,6 +14,11 @@ namespace VG.Internal
             {
                 throw new System.Exception(Prefix(managerName) + "No supported service.");
             }
+
+            public static void ProductDoesNotExists(string managerName, string key_product)
+            {
+                throw new System.Exception(Prefix(managerName) + $"Product \"{key_product}\" does not exists!");
+            }
         }
 
         public static class Message
@@ -23,7 +28,7 @@ namespace VG.Internal
 
         public static string Prefix(string name)
         {
-            if (Platform.editor) return $"<color={vgDebugColor}>{name}: </color>";
+            if (Environment.editor) return $"<color={vgDebugColor}>[{name}] </color>";
             else return $"{name}: ";
         }
 

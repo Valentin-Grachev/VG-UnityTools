@@ -5,7 +5,7 @@ namespace VG
 {
     public class Editor_ReviewService : ReviewService
     {
-        public override bool supported => Platform.editor;
+        public override bool supported => Environment.editor;
 
         public override void Initialize() => CompleteInitializing();
 

@@ -10,7 +10,7 @@ namespace VG
         [SerializeField] private bool _tracking;
 
 
-        public override bool supported => Platform.editor;
+        public override bool supported => Environment.editor;
 
         public override void Initialize() => CompleteInitializing();
 

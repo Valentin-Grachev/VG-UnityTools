@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 using VG.Internal;
 
@@ -11,7 +10,7 @@ namespace VG
         public class Product
         {
             [SerializeField] private string _key; public string key => _key;
-            [SerializeField] private bool _consumable;
+            [SerializeField] private bool _consumable; public bool consumable => _consumable;
             public int purchasesQuantity { get; private set; }
 
             public void Initialize(int purchasesQuantity)
@@ -44,17 +43,17 @@ namespace VG
         protected override string managerName => "VG IAP";
 
 
-        [SerializeField] private List<Product> _products;
+        [SerializeField] private IapCatalog _iapCatalog;
 
         protected override void OnInitialized()
         {
             instance = this;
 
-            service.InitializeProducts(_products);
+            service.InitializeProducts(_iapCatalog.products);
 
-            var purchasesHandler = GetComponent<PurchasesMediator>();
-            purchasesHandler.Initialize();
-            purchasesHandler.Handle(_products);
+            var purchasesMediator = GetComponent<PurchasesMediator>();
+            purchasesMediator.Initialize();
+            purchasesMediator.Handle(_iapCatalog.products);
 
             Log(Core.Message.Initialized(managerName));
         }
@@ -63,12 +62,17 @@ namespace VG
 
 
         public static string GetPriceString(string key_product)
-            => service.GetPriceString(key_product);
+        {
+            CheckProduct(key_product);
+            return service.GetPriceString(key_product);
+        }
 
 
 
         public static void Purchase(string key_product)
         {
+            CheckProduct(key_product);
+
             instance.Log("Product purchase processing: " + key_product);
 
             service.Purchase(key_product, (success) =>
@@ -82,7 +86,7 @@ namespace VG
                     Saves.Commit((success) =>
                     {
                         if (success)
-                            foreach (var product in instance._products)
+                            foreach (var product in instance._iapCatalog.products)
                                 if (product.key == key_product)
                                 {
                                     product.Initialize(1);
@@ -101,6 +105,19 @@ namespace VG
         {
             instance.Log("Consuming: " + key_product);
             service.Consume(key_product);
+        }
+
+        private static void CheckProduct(string key_product)
+        {
+            bool productExists = false;
+            foreach (var product in instance._iapCatalog.products)
+                if (product.key == key_product)
+                {
+                    productExists = true;
+                    break;
+                }
+
+            if (!productExists) Core.Error.ProductDoesNotExists(instance.managerName, key_product);
         }
 
 

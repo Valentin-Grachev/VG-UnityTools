@@ -9,7 +9,6 @@ namespace VG
     public class Boot : MonoBehaviour
     {
         [SerializeField] private List<Initializable> _initializables;
-        [SerializeField] private List<Initializable> _waitInitializations;
 
 
         private void Awake()
@@ -29,7 +28,7 @@ namespace VG
             while (!allInitialized)
             {
                 allInitialized = true;
-                foreach (var initializable in _waitInitializations)
+                foreach (var initializable in _initializables)
                     if (!initializable.initialized && initializable.gameObject.activeInHierarchy) 
                         allInitialized = false;
 

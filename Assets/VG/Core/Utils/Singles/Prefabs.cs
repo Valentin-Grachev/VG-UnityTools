@@ -22,6 +22,8 @@ namespace VG
         {
             prefabs = new Dictionary<string, GameObject>();
             foreach (var item in _prefabs) prefabs.Add(item.id, item.prefab);
+
+            CompleteInitializing();
         }
 
         public static GameObject Get(string id) => prefabs[id];

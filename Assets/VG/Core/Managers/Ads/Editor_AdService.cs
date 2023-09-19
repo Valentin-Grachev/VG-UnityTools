@@ -6,7 +6,7 @@ namespace VG
 {
     public class Editor_AdService : AdService
     {
-        public override bool supported => Platform.editor;
+        public override bool supported => Environment.editor;
 
         public override void Initialize() => CompleteInitializing();
 

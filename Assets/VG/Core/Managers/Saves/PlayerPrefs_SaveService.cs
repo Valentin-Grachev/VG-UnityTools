@@ -13,7 +13,7 @@ namespace VG
         {
             get
             {
-                if (_onlyEditor) return Platform.editor;
+                if (_onlyEditor) return Environment.editor;
                 else return true;
             }
         }

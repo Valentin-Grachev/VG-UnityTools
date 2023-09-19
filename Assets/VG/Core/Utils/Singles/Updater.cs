@@ -39,6 +39,8 @@ namespace VG
         {
             foreach (var update in _updates)
                 updates.Add(update.key, update);
+
+            CompleteInitializing();
         }
 
 
