@@ -48,6 +48,7 @@ mergeInto(LibraryManager.library, {
     payments.purchase({ id: UTF8ToString(productId) }).then(purchase => {
 
       // Покупка успешно совершена!
+      window.focus();
       unity.SendMessage('YandexGames', 'HTML_OnPurchaseHandled', 1); 
 
     }).catch(err => {
@@ -56,6 +57,7 @@ mergeInto(LibraryManager.library, {
       // пользователь не авторизовался, передумал и закрыл окно оплаты,
       // истекло отведенное на покупку время, не хватило денег и т. д.
 
+      window.focus();
       unity.SendMessage('YandexGames', 'HTML_OnPurchaseHandled', 0);
       console.log(err);
 

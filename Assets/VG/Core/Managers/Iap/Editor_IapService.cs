@@ -7,7 +7,7 @@ namespace VG
 {
     public class Editor_IapService : IapService
     {
-        public override bool supported => true;
+        public override bool supported => Environment.editor;
 
         public override void Consume(string key_product) => Core.LogEditor("Consumed: " + key_product);
 

@@ -165,7 +165,7 @@
 
       script.onload = () => {
         createUnityInstance(canvas, config, (progress) => {
-          loadingText.innerHTML = progress.toString() + "%";
+          loadingText.innerHTML = (Math.round(100 * progress)).toString() + "%";
           progressBarFull.style.width = 100 * progress + "%";
         }).then((unityInstance) => {
           unity = unityInstance;

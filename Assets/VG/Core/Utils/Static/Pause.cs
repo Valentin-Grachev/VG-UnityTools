@@ -8,32 +8,36 @@ namespace VG
         private static float originTimeScale;
         private static bool originAudioPause;
 
-        private static bool pause = false;
+        private static int pause = 0;
 
 
 
         public static void Set(bool active)
         {
-            if (active && pause || !active && !pause) return;
-
 
             if (active)
             {
-                originTimeScale = Time.timeScale;
-                originAudioPause = AudioListener.pause;
+                pause++;
+                if (pause == 1)
+                {
+                    originTimeScale = Time.timeScale;
+                    originAudioPause = AudioListener.pause;
 
-                AudioListener.pause = true;
-                Time.timeScale = 0f;
-
-                pause = true;
+                    AudioListener.pause = true;
+                    Time.timeScale = 0f;
+                }
             }
 
             else
             {
-                Time.timeScale = originTimeScale;
-                AudioListener.pause = originAudioPause;
+                pause--;
+                if (pause < 0) pause = 0;
 
-                pause = false;
+                if (pause == 0)
+                {
+                    Time.timeScale = originTimeScale;
+                    AudioListener.pause = originAudioPause;
+                }
             }
 
         }

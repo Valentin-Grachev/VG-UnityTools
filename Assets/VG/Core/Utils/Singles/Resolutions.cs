@@ -11,8 +11,8 @@ namespace VG
         private int _currentWidth;
         private int _currentHeight;
 
-        public static float horizontalRatio => Screen.width / Screen.height;
-        public static float verticalRatio => Screen.height / Screen.width;
+        public static float horizontalRatio => (float)Screen.width / (float)Screen.height;
+        public static float verticalRatio => (float)Screen.height / (float)Screen.width;
 
         private void Awake()
         {
