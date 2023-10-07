@@ -57,6 +57,7 @@ namespace VG
 
                 case Ads.AdType.Interstitial:
                     bool interstitialWasShown = false;
+                    Pause.Set(true);
 
                     YG_Ads.ShowInterstitial((action) =>
                     {
@@ -64,7 +65,6 @@ namespace VG
                         {
                             case YG_Ads.InterstitialAction.Opened:
                                 interstitialWasShown = true;
-                                Pause.Set(true);
                                 break;
 
                             case YG_Ads.InterstitialAction.Closed:

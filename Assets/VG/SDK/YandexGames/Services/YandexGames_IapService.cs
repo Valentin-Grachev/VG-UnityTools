@@ -81,16 +81,16 @@ namespace VG
         }
 
 
-        public void SetPriceLanguage(LangDefiner.Language language)
+        public void SetPriceLanguage(Language language)
         {
             switch (language)
             {
-                case LangDefiner.Language.RU:
+                case Language.RU:
                     _currency = "ßÍÎÂ";
                     break;
 
-                case LangDefiner.Language.TR:
-                case LangDefiner.Language.EN:
+                case Language.TR:
+                case Language.EN:
                     _currency = "YAN";
                     break;
 
