@@ -26,10 +26,20 @@ namespace VG
         protected override void UpdateValue() => _onUpdate?.Invoke(Localization.GetString(_key, _useToken));
 
 
+        public void SetKey(string key, bool useToken)
+        {
+            _key = key;
+            _useToken = useToken;
+            UpdateValue();
+        }
+
+
         private void OnValidate()
         {
             if (TryGetComponent<TextMeshProUGUI>(out var text)) text.text = $"<{_key}>";
         }
+
+
 
 
     }

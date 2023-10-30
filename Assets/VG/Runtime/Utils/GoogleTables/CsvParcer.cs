@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-
+using UnityEngine;
 
 namespace VG
 {
@@ -47,6 +47,8 @@ namespace VG
 
         private static List<string> SplitToWords(string csvRowData)
         {
+            Debug.Log(csvRowData);
+
             List<string> result = new List<string>();
             bool ignoreSplit = false;
             string word = string.Empty;
@@ -54,13 +56,19 @@ namespace VG
             for (int i = 0; i < csvRowData.Length; i++)
             {
                 char symbol = csvRowData[i];
-                if (symbol == '\"') ignoreSplit = !ignoreSplit;
+                if (symbol == '\"')
+                {
+                    ignoreSplit = !ignoreSplit;
+                    continue;
+                }
+                    
                 if (symbol == ',' && !ignoreSplit)
                 {
                     result.Add(word);
                     word = string.Empty;
                     continue;
                 }
+
                 word += symbol;
             }
 

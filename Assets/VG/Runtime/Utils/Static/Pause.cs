@@ -9,11 +9,13 @@ namespace VG
         private static bool originAudioPause;
 
         private static int pause = 0;
-
+        private static bool pauseWasUsed = false;
 
 
         public static void Set(bool active)
         {
+            if (!pauseWasUsed && !active) return;
+            pauseWasUsed = true;
 
             if (active)
             {

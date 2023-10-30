@@ -8,7 +8,7 @@ namespace VG
 
 
     
-    public class LocalizedData<Type> : LoadableFromTable where Type : ITranslation
+    public abstract class LocalizedData<Type> : LoadableFromTable where Type : ITranslation
     {
         [SerializeField] protected List<Type> _translations;
 
@@ -22,7 +22,6 @@ namespace VG
                 translations.Add(phrase.Key, phrase);
         }
 
-        public override void LoadData(Dictionary<string, Table> tables) { }
     }
 
 

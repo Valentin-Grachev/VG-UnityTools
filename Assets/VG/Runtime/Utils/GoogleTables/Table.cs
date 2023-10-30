@@ -20,14 +20,15 @@ namespace VG
         public bool dataAccepted { get; private set; }
         public bool error { get; private set; }
 
-        public string url => urlTemplate.Replace("*", _webId) + "&gid=" + _gid;
+        public string checkUrl => checkUrlTemplate.Replace("*", _webId) + "#gid=" + _gid;
+        public string loadUrl => loadUrlTemplate.Replace("*", _webId) + "&gid=" + _gid;
 
 
         private List<List<string>> _cells;
 
 
-        private const string urlTemplate = "https://docs.google.com/spreadsheets/d/*/export?format=csv";
-
+        private const string checkUrlTemplate = "https://docs.google.com/spreadsheets/d/*/edit";
+        private const string loadUrlTemplate = "https://docs.google.com/spreadsheets/d/*/export?format=csv";
 
         public string Get(int row, int column) => _cells[row][column];
 
@@ -40,7 +41,7 @@ namespace VG
             dataAccepted = false;
             error = false;
 
-            using (UnityWebRequest request = UnityWebRequest.Get(url))
+            using (UnityWebRequest request = UnityWebRequest.Get(loadUrl))
             {
                 yield return request.SendWebRequest();
 
@@ -51,6 +52,7 @@ namespace VG
                     string csvData = request.downloadHandler.text;
                     _cells = CsvParcer.Parce(csvData);
                     
+                    Debug.Log(csvData);
                     Debug.Log(Core.Prefix(editorName) + Core.Green("Success: ") + _key);
                 }
                 else

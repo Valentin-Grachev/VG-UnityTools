@@ -1,6 +1,7 @@
 using NaughtyAttributes;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 
@@ -21,12 +22,15 @@ namespace VG
         {
             instance = this;
 
-            if (!_requestDataBeforeStart) { CompleteInitializing(); return; }
-
-            RequestData();
+            if (_requestDataBeforeStart) RequestData();
+            else CompleteInitializing();
         }
 
         public static void LoadData() => instance.RequestData();
+
+        [Button("Open First Table")]
+        private void OpenTableURL() => Application.OpenURL(_tables[0].checkUrl);
+
 
 
         [Button("Load Data")]
@@ -64,7 +68,13 @@ namespace VG
             if (dataError) throw new System.Exception("Table data error!");
 
             foreach (var loadable in _loadables)
-                loadable.LoadData(tables);
+            {
+#if UNITY_EDITOR
+                EditorUtility.SetDirty(loadable);
+#endif
+                loadable.HandleData(tables);
+            }
+            
                 
 
             CompleteInitializing();
