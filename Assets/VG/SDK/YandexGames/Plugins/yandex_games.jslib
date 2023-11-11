@@ -318,4 +318,9 @@ mergeInto(LibraryManager.library, {
     unity.SendMessage('YandexGames', 'HTML_OnLanguageReceived', sdk.environment.i18n.lang);
   },
 
+  GameReady: function () {
+    sdk.features.LoadingAPI?.ready();
+    console.log('Game ready');
+  },
+
 });
