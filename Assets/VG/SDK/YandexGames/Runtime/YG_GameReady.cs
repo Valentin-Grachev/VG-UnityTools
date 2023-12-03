@@ -11,7 +11,8 @@ namespace VG.YandexGames
 
         void Start()
         {
-            if (Environment.gameStore == Environment.GameStore.YandexGames)
+            if (Environment.editor) VG.Internal.Core.LogEditor("Yandex Game ready.");
+            else if (Environment.gameStore == Environment.GameStore.YandexGames)
                 GameReady();
 
         }

@@ -24,8 +24,8 @@ namespace VG
         }
 
 
-        
-        
+
+
 
         public override void Show(Ads.AdType adType, string key_ad, Action<bool> onSuccess)
         {
@@ -33,13 +33,13 @@ namespace VG
             {
                 case Ads.AdType.Rewarded:
                     bool playerRewarded = false;
+                    Pause.Set(true);
 
-                    YG_Ads.ShowRewarded((action) => 
+                    YG_Ads.ShowRewarded((action) =>
                     {
                         switch (action)
                         {
                             case YG_Ads.RewardedAction.Opened:
-                                Pause.Set(true);
                                 break;
 
                             case YG_Ads.RewardedAction.Closed:
@@ -57,7 +57,6 @@ namespace VG
 
                 case Ads.AdType.Interstitial:
                     bool interstitialWasShown = false;
-                    Pause.Set(true);
 
                     YG_Ads.ShowInterstitial((action) =>
                     {
@@ -65,6 +64,7 @@ namespace VG
                         {
                             case YG_Ads.InterstitialAction.Opened:
                                 interstitialWasShown = true;
+                                Pause.Set(true);
                                 break;
 
                             case YG_Ads.InterstitialAction.Closed:
@@ -88,6 +88,5 @@ namespace VG
         }
     }
 }
-
 
 
